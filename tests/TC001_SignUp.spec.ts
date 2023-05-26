@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { App } from '../pages/App';
-import { HomePage } from '../pages/HomePage';
 
 test('Should be able to sign up', async ({ page }) => {
   
@@ -32,7 +31,7 @@ test('Should be able to sign up', async ({ page }) => {
 
     await app.HomePage.loginFromHomePage(newEmail)
 
-    await expect(app.HomePage.fastTrackCrmHeader).toBeVisible
+    await expect(app.HomePage.fastTrackCrmHeader).toBeVisible()
 
 });
 
