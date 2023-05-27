@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { App } from '../pages/App';
 
-test('Should be able to sign up', async ({ page }) => {
+test('Should be able to login', async ({ page }) => {
   
     const app = new App(page)
 

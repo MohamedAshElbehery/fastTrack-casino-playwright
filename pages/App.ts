@@ -1,5 +1,6 @@
-import  { Page } from  '@playwright/test';
-import  { HomePage } from './HomePage'
+import { Page } from '@playwright/test';
+import { HomePage } from './HomePage'
+import { Account } from './Account'
 
 export class App {
 
@@ -13,5 +14,10 @@ export class App {
     public get HomePage(): HomePage {
 
         return new HomePage(this.page)
+    }
+
+    public get Account(): Account {
+
+        return new Account(this.page)
     }
 }
