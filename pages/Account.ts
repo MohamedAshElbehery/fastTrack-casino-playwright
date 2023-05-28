@@ -14,6 +14,7 @@ export class Account {
     readonly depositOkBtn: Locator
     readonly depositSuccessMessage: Locator
     readonly welcomeBonus: Locator
+    readonly tryAgainBtn: Locator
 
     constructor(page:Page){
 
@@ -28,10 +29,13 @@ export class Account {
         this.depositNotApprovedMessage = page.locator('//h3[contains(text(),"deposit was not approved")]')
         this.depositOkBtn = page.locator('//button[contains(text(),"OK")]')
         this.depositSuccessMessage = page.locator('//h3[contains(text(),"Your deposit was successful!")]')
+        this.tryAgainBtn = page.locator('//button[contains(text(),"Try again")]')
 
     }
 
     async getDepositBalance(){
+
+    this.balanceBtn.waitFor({state: "visible"})
 
     const balanceBeforeCleaning =  await this.balanceBtn.innerText()
 

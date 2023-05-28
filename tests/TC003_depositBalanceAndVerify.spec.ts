@@ -13,6 +13,8 @@ test('Deposit approved amount', async ({ page }) => {
 
     await app.HomePage.loginFromHomePage(userEmail)
 
+    await expect(app.Account.balanceBtn).not.toHaveText("€0.00")
+
     const initialBalance = await app.Account.getDepositBalance()
 
     await app.Account.depositBalance()
@@ -22,6 +24,8 @@ test('Deposit approved amount', async ({ page }) => {
     await expect(app.Account.depositSuccessMessage).toBeVisible()
 
     await app.Account.confirmDeposit()
+
+    await expect(app.Account.depositOkBtn).not.toBeVisible()
 
     const finalBalance = await app.Account.getDepositBalance()
 
@@ -39,6 +43,8 @@ test('Deposit failed amount', async ({ page }) => {
 
     await app.HomePage.loginFromHomePage(userEmail)
 
+    await expect(app.Account.balanceBtn).not.toHaveText("€0.00")
+
     const initialBalance = await app.Account.getDepositBalance()
 
     await app.Account.depositBalance()
@@ -48,6 +54,8 @@ test('Deposit failed amount', async ({ page }) => {
     await expect(app.Account.depositNotApprovedMessage).toBeVisible()
 
     await app.Account.exitDepositMenu()
+
+    await expect(app.Account.tryAgainBtn).not.toBeVisible()
 
     const finalBalance = await app.Account.getDepositBalance()
 
