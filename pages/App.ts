@@ -1,6 +1,7 @@
 import { Page } from '@playwright/test';
 import { HomePage } from './HomePage'
 import { Account } from './Account'
+import { Casino } from './Casino';
 
 export class App {
 
@@ -19,5 +20,10 @@ export class App {
     public get Account(): Account {
 
         return new Account(this.page)
+    }
+
+    public get Casino(): Casino {
+
+        return new Casino(this.page)
     }
 }

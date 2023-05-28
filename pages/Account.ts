@@ -33,11 +33,9 @@ export class Account {
 
     async getDepositBalance(){
 
-     const balanceBeforeCleaning =  await this.balanceBtn.innerText()
+    const balanceBeforeCleaning =  await this.balanceBtn.innerText()
 
-     const balanceArray = balanceBeforeCleaning.split('[€.]')
-
-     const balanceAfterCleaning = parseInt(balanceArray[1])
+    const balanceAfterCleaning = Number(balanceBeforeCleaning.replace(/[€]/g,""))
 
      return balanceAfterCleaning
 
