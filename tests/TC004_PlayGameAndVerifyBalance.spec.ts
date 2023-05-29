@@ -16,6 +16,9 @@ test('Should be able to win a game', async ({ page }) => {
     //asserting that the casino page opened properly
     await expect(page).toHaveURL('https://demo.ft-crm.com/casino')
 
+    //waiting for balance to be visible
+    await expect(app.Casino.gameBalance).toBeVisible()
+
     //saving the initial balance
     const initialBalance = await app.Casino.getGameBalance()
 
@@ -26,6 +29,8 @@ test('Should be able to win a game', async ({ page }) => {
     await expect(app.Casino.winMessage).toBeVisible()
 
     await expect(app.Casino.winMessage).toBeHidden()
+
+    await expect(app.Casino.gameBalance).toBeVisible()
 
     //getting the balance after winning
     const finalBalance = await app.Casino.getGameBalance()
@@ -49,6 +54,8 @@ test('Should be able to lose a game', async ({ page }) => {
 
     await expect(page).toHaveURL('https://demo.ft-crm.com/casino')
 
+    await expect(app.Casino.gameBalance).toBeVisible()
+
     const initialBalance = await app.Casino.getGameBalance()
 
     await app.Casino.chooseLosingOption()
@@ -56,6 +63,8 @@ test('Should be able to lose a game', async ({ page }) => {
     await expect(app.Casino.loseMessage).toBeVisible()
 
     await expect(app.Casino.loseMessage).toBeHidden()
+
+    await expect(app.Casino.gameBalance).toBeVisible()
 
     const finalBalance = await app.Casino.getGameBalance()
 
