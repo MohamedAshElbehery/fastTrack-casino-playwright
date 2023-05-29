@@ -1,5 +1,6 @@
 import type { Locator , Page } from  '@playwright/test';
 
+//creating the homepage class
 export class HomePage {
 
     readonly page: Page
@@ -18,6 +19,7 @@ export class HomePage {
     readonly returningUserBtn: Locator
     readonly fastTrackCrmHeader: Locator
 
+    //constructing the locators
     constructor(page:Page){
 
         this.page = page
@@ -38,12 +40,14 @@ export class HomePage {
 
     }
 
+    //navigate to home page action
     async navigateToHomePage(){
 
        await this.page.goto('https://demo.ft-crm.com/tour')
 
     }
 
+    //generating random emails function
     async generateRandomEmail(){
 
       let rand = Math.random() * 99999
@@ -56,6 +60,7 @@ export class HomePage {
 
     }
 
+    //signup action
     async register(newEmail: string, newPhoneExtension: string, newPhoneNumber: string, newName: string, newPassword: string){
 
       await this.newUserBtn.click()
@@ -82,12 +87,14 @@ export class HomePage {
 
    }
 
+   //login from signup page action
    async loginFromSignUpPage(){
 
       await this.signUpPageLoginBtn.click()
 
    }
 
+   //login from homepage action
    async loginFromHomePage(userEmail: string){
 
       await this.returningUserBtn.click()

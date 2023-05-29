@@ -25,6 +25,7 @@ export class Casino {
 
     }
 
+    //open casino page action
     async openCasinoPage(){
 
         await this.navPanel.click()
@@ -33,6 +34,7 @@ export class Casino {
    
        }
 
+    //getting the game balance from the iframe and cleaning it
      async getGameBalance(){
 
         this.gameBalance.waitFor({state: "visible"})
@@ -45,12 +47,14 @@ export class Casino {
     
         }
 
+    //choosing the busy cat action
     async chooseWinningOption(){
 
         await this.busyCatImg.click()
 
     }
 
+    //choosing the non busy cat action
     async chooseLosingOption(){
 
         await this.nonBusyCatImg.click()

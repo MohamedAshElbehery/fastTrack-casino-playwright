@@ -33,6 +33,7 @@ export class Account {
 
     }
 
+    //getting the account balance from the balance button, clean it and cast it into number
     async getDepositBalance(){
 
     this.balanceBtn.waitFor({state: "visible"})
@@ -45,6 +46,7 @@ export class Account {
 
     }
 
+    //deposit balance action
     async depositBalance(){
 
       await this.balanceBtn.click()
@@ -55,24 +57,28 @@ export class Account {
 
     }
 
+    //approve deposit action
     async approveDeposit(){
 
         await this.depositApprovedBtn.click()
 
     }
 
+    //confirm a deposit action
     async confirmDeposit(){
 
         await this.depositOkBtn.click()
 
     }
 
+    //fail a deposit action
     async failDeposit(){
 
         await this.depositFailedBtn.click()
 
     }
 
+    //exit the deposit menu action
     async exitDepositMenu(){
 
         await this.depositFormExitBtn.click()

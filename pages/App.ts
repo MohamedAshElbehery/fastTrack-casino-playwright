@@ -3,6 +3,8 @@ import { HomePage } from './HomePage'
 import { Account } from './Account'
 import { Casino } from './Casino';
 
+//The App class that contains instances of all pages so they can
+//be accessable in any test
 export class App {
 
     readonly page: Page

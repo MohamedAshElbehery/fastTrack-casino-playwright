@@ -13,18 +13,24 @@ test('Should be able to win a game', async ({ page }) => {
 
     await app.Casino.openCasinoPage()
 
+    //asserting that the casino page opened properly
     await expect(page).toHaveURL('https://demo.ft-crm.com/casino')
 
+    //saving the initial balance
     const initialBalance = await app.Casino.getGameBalance()
 
+    //clicking on the busy cat
     await app.Casino.chooseWinningOption()
 
+    //asserting on the success message and waiting for it to be hidden
     await expect(app.Casino.winMessage).toBeVisible()
 
     await expect(app.Casino.winMessage).toBeHidden()
 
+    //getting the balance after winning
     const finalBalance = await app.Casino.getGameBalance()
 
+    //asserting that the balance increased
     expect(finalBalance).toBeGreaterThan(initialBalance)
 
 });
@@ -53,6 +59,7 @@ test('Should be able to lose a game', async ({ page }) => {
 
     const finalBalance = await app.Casino.getGameBalance()
 
+    //asserting that the balance decreased after losing
     expect(finalBalance).toBeLessThan(initialBalance)
 
 });
